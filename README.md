@@ -2,7 +2,18 @@
 
 The following is an example of how to structure a React/Redux application in a scalable way. This may be overkill for simple applications, but is more aimed at SPAs that are foreseen to grow quite large and a way to manage the complexity of the app is required.
 
-## Strategies for Organising the Code
+## Table of Contents
+
+* [Typical Strategies for Organising the Code](#typical-strategies-for-organising-the-code)
+  * [Organise by File Type](#organise-by-file-type)
+  * [Organise by Feature](#organise-by-feature)
+* [The Hybrid Approach](#the-hybrid-approach)
+* [Folder structure](#folder-structure)
+  * [Index Files](#index-files)
+  * [Using Data from Modules](#using-data-from-modules)
+* [State Structure](#state-structure)
+
+## Typical Strategies for Organising the Code
 
 Typical strategies for organising code are organising by type and organising by feature.
 
@@ -47,7 +58,7 @@ Some issues with this approach are:
 * Lines between different features are often blurry. Quite easy to have a couple of very large features that are not clear how to break up
 * Features often require data from other features, and thus become tightly coupled
 
-## Hybrid
+## The Hybrid Approach
 
 This approach is similar to organising by feature, but separates the data and view layers. We get the benefit of grouping files together into meaningful `modules` that isolate functionality, indicate app functionality just by looking at the code and can be easily reused, but avoiding the downside of tightly coupled features by separating out the data layer.
 
@@ -58,7 +69,7 @@ Key principles
 * Unit tests colocated with the files they are testing
 * Each module has a `constants.js` file which has a `NAME` constant for the name of the module. This `NAME` is used in action names for the module as well as for the key in redux state where the module is mounted
 
-### Folder structure
+## Folder structure
 
 Summary
 
@@ -100,7 +111,7 @@ Example:
     * selectors.js
     * index.js
 
-#### Index Files
+### Index Files
 
 An `index.js` file would look like this:
 
@@ -120,7 +131,7 @@ export default {
 }
 ```
 
-#### Using Data from Modules
+### Using Data from Modules
 
 As an example, when in a container component in a page and accessing some data from a higher level module you would do this:
 
